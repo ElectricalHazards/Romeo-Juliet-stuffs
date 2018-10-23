@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="main.css">
+    <title>Scenes & Chars</title>
+
+    <style>
+        .odd {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Scene</th>
+                <th>Characters</th>
+            </tr>
+        </thead>
+        <tbody id="scene-table">
+        </tbody>
+    </table>
+
+    <script src="objects.js"></script>
+    <script>
+
+        var sceneTable = document.getElementById('scene-table');
+
+        for(var i = 0; i < scenesAndChars.length; i++) {
+
+            // create the first row that will hold the scene name and the first character
+            var firstRow = document.createElement('tr'); // style this variable
+            var sceneName = document.createElement('td');
+            var firstChar = document.createElement('td');
+
+            if(i % 2 == 0)
+                firstRow.className = 'odd';
+
+            sceneName.rowSpan = scenesAndChars[i].length - 1;
+            sceneName.innerText = scenesAndChars[i][0];
+            firstChar.innerText = scenesAndChars[i][1];
+
+            firstRow.appendChild(sceneName);
+            firstRow.appendChild(firstChar);
+            sceneTable.appendChild(firstRow);
+
+            // add all subsuquent characters
+            for(var j = 2; j < scenesAndChars[i].length; j++) {
+
+                var row = document.createElement('tr'); // style this variable
+                var charTD = document.createElement('td');
+
+                if(i % 2 == 0)
+                    row.className = 'odd';
+
+                charTD.innerText = scenesAndChars[i][j];
+
+                row.appendChild(charTD);
+                sceneTable.appendChild(row);
+            }
+        }
+
+    </script>
+
+</body>
+</html>

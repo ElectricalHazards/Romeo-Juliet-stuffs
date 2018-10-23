@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="main.css">
+    <title>R&J Chars</title>
+</head>
+<body>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Character Name</th>
+            </tr>
+        </thead>
+        <tbody id="char-table">
+        </tbody>
+    </table>
+
+    <script src="objects.js"></script>
+    <script>
+
+        var charTable = document.getElementById('char-table');
+
+
+        // for each character, add a row with their information
+        for(var i = 0; i < chars.length; i++) {
+
+            var row = document.createElement('tr'); // style this variable
+            var charNum = document.createElement('td');
+            var charName = document.createElement('td');
+
+            charNum.innerText = i+1;
+            charName.innerText = chars[i];
+
+            row.appendChild(charNum);
+            row.appendChild(charName);
+            charTable.appendChild(row);
+        }
+
+    </script>
+
+</body>
+</html>

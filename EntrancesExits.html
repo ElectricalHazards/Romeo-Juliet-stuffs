@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="main.css">
+    <title>Entrances and Exits</title>
+
+    <style>
+        .odd {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    
+    <table border="1">
+        // create our row elements
+        // create our row elements
+        <thead>
+            <tr>
+                <th>Line Before</th>
+                <th>Instruction</th>
+                <th>Line After</th>
+            </tr>
+        </thead>
+        <tbody id="scene-table">
+            <!-- <tr>
+                <td>START NUM</td>
+                <td rowspan="3">INSTR</td>
+                <td>END NUM</td>
+            </tr>
+            <tr>
+                <td>START CHR</td>
+                <td>END CHR</td>
+            </tr>
+            <tr>
+                <td>START TXT</td>
+                <td>END TXT</td>
+            </tr> -->
+    </tbody>
+    </table>
+
+    <script src="objects.js"></script>
+    <script>
+
+        var sceneTable = document.getElementById('scene-table');
+
+        for(var i = 0; i < entrExits.length; i++) {
+
+            // create our row elements
+            var firstRow = document.createElement('tr');  // style this variable
+            var secondRow = document.createElement('tr'); // style this variable
+            var thirdRow = document.createElement('tr');  // style this variable
+
+            if(i % 2 == 0) {
+                firstRow.className = 'odd';
+                secondRow.className = 'odd';
+                thirdRow.className = 'odd';
+            }
+
+            // create our td elements
+            var lineBeforeNum = document.createElement('td');
+            var lineAfterNum = document.createElement('td');
+            var lineBeforeTxt = document.createElement('td');
+            var lineAfterTxt = document.createElement('td');
+            var lineBeforeChr = document.createElement('td');
+            var lineAfterChr = document.createElement('td');
+            var instr = document.createElement('td');
+
+            // set our instr rowspan
+            instr.rowSpan = 3;
+
+            // set our text
+            lineBeforeNum.innerText = entrExits[i][0];
+            lineBeforeChr.innerText = entrExits[i][1];
+            lineBeforeTxt.innerText = entrExits[i][2];
+            instr.innerText = entrExits[i][3];
+            lineAfterNum.innerText = entrExits[i][4];
+            lineAfterChr.innerText = entrExits[i][5];
+            lineAfterTxt.innerText = entrExits[i][6];
+
+            // inflate our UI
+            firstRow.appendChild(lineBeforeNum);
+            firstRow.appendChild(instr);
+            firstRow.appendChild(lineAfterNum);
+            secondRow.appendChild(lineBeforeChr);
+            secondRow.appendChild(lineAfterChr);
+            thirdRow.appendChild(lineBeforeTxt);
+            thirdRow.appendChild(lineAfterTxt)
+            sceneTable.appendChild(firstRow);
+            sceneTable.appendChild(secondRow);
+            sceneTable.appendChild(thirdRow);
+
+        }
+
+    </script>
+
+</body>
+</html>
